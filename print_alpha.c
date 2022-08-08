@@ -20,15 +20,19 @@ int print_string(va_list l, flags_t *f)
 }
 
 /**
- * print_char - prints a character
- * @l: va_list arguments from _printf
- * @f: pointer to the struct flags that determines
- * if a flag is passed to _printf
- * Return: number of char printed
+ * print_char - Prints a char
+ * @types: List a of arguments
+ * @buffer: Buffer array to handle print
+ * @flags:  Calculates active flags
+ * @width: Width
+ * @precision: Precision specification
+ * @size: Size specifier
+ * Return: Number of chars printed
  */
-int print_char(va_list l, flags_t *f)
+int print_char(va_list types, char buffer[],
+	int flags, int width, int precision, int size)
 {
-	(void)f;
-	_putchar(va_arg(l, int));
-	return (1);
+	char c = va_arg(types, int);
+
+	return (handle_write_char(c, buffer, flags, width, precision, size));
 }
