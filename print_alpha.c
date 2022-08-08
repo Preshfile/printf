@@ -20,13 +20,15 @@ int print_string(va_list l, flags_t *f)
 }
 
 /**
- * _print_char - prints a character
- * @args: the arguments list
- *
- * Return: 1 (number of chars printed)
+ * print_char - prints a character
+ * @l: va_list arguments from _printf
+ * @f: pointer to the struct flags that determines
+ * if a flag is passed to _printf
+ * Return: number of char printed
  */
-int _print_char(va_list args)
+int print_char(va_list l, flags_t *f)
 {
-	_putchar(va_arg(args, int));
+	(void)f;
+	_putchar(va_arg(l, int));
 	return (1);
 }
